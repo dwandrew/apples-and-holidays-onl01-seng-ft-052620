@@ -63,19 +63,34 @@ def all_winter_holiday_supplies(holiday_hash)
   winter_supplies.flatten 
 end
 
-def all_supplies_in_holidays(holiday_hash)
-  # iterate through holiday_hash and print items such that your readout resembles:
-  # Winter:
-  #   Christmas: Lights, Wreath
-  #   New Years: Party Hats
-  # Summer:
-  #   Fourth Of July: Fireworks, BBQ
-  # etc.
- holiday_hash.each do |season, holiday| puts "#{season.to_s.capitalize}:" 
-      holiday.each do|holiday, supplies| 
-        puts "  #{holiday.to_s.split('_').map{|word| word.capitalize}.join(' ')}: #{supplies.join(', ')}"
- end
-end
+# def all_supplies_in_holidays(holiday_hash)
+#   # iterate through holiday_hash and print items such that your readout resembles:
+#   # Winter:
+#   #   Christmas: Lights, Wreath
+#   #   New Years: Party Hats
+#   # Summer:
+#   #   Fourth Of July: Fireworks, BBQ
+#   # etc.
+# holiday_hash.each do |season, holiday| puts "#{season.to_s.capitalize}:" 
+#       holiday.each do|holiday, supplies| 
+#         puts "  #{holiday.to_s.split('_').map{|word| word.capitalize}.join(' ')}: #{supplies.join(', ')}"
+# end
+# end
+
+def all_supplies_in_holidays(holiday_hash) 
+  holiday_hash.each do |season, seasonHash| 
+    seasonHash.each do |holiday, array| 
+      holiday.to_s.capitalize! 
+      holiday.to_s.split('_').each do |item| item.capitalize!
+  binding.pry
+  end
+  holiday.to_s.split('_').join('_') 
+  end
+  end 
+  puts holiday_hash 
+  end
+
+
 
 end
 
@@ -90,7 +105,6 @@ holiday_hash.each do |season, holiday|
   end
   bbq_hols
 end
-
 
 
 
